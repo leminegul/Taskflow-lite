@@ -1,0 +1,51 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --border: #e6ecf5;
+  --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --shadow-sm: 0 10px 22px rgba(15, 23, 42, 0.06);
+  --radius: 18px;
+  --radius-sm: 14px;
+
+  --primary: #111827;
+  --primary-2: #0b1220;
+
+  --todo: #f59e0b;
+  --inprogress: #3b82f6;
+  --done: #22c55e;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(
+      1200px 600px at 20% -10%,
+      rgba(59, 130, 246, 0.14),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 500px at 90% 0%,
+      rgba(34, 197, 94, 0.12),
+      transparent 60%
+    ),
+    var(--bg);
+  color: var(--text);
+}
+a {
+  color: inherit;
+}
+button,
+input,
+select {
+  font-family: inherit;
+}

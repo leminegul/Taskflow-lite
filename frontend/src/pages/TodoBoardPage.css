@@ -1,0 +1,320 @@
+.page {
+  padding: 28px 18px 60px;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.titleWrap .hello {
+  font-size: 14px;
+  color: var(--muted);
+}
+.titleWrap h1 {
+  margin: 6px 0 0;
+  font-size: 38px;
+  letter-spacing: -0.7px;
+  line-height: 1.05;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 10px 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0px);
+}
+
+.btnPrimary {
+  background: var(--primary);
+  border-color: transparent;
+  color: white;
+}
+.btnGhost {
+  background: transparent;
+  box-shadow: none;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.panelHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: -0.2px;
+}
+.panelHeader p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 150px 170px 110px;
+  gap: 10px;
+}
+
+.field {
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 14px;
+  padding: 12px 12px;
+  outline: none;
+  font-size: 14px;
+}
+.field:focus {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.error {
+  margin-top: 10px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.1);
+  color: #991b1b;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+}
+
+.board {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+.boardScroll {
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.grid {
+  min-width: 980px; /* küçük ekranda kırılmasın */
+}
+
+.gridHeader {
+  display: grid;
+  grid-template-columns: 170px repeat(5, 1fr);
+  gap: 12px;
+  padding: 10px 8px 14px;
+  border-bottom: 1px solid rgba(230, 236, 245, 0.9);
+}
+
+.yearChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: white;
+  width: fit-content;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+}
+
+.gridRow {
+  display: grid;
+  grid-template-columns: 170px repeat(5, 1fr);
+  gap: 12px;
+  padding: 12px 8px;
+  border-bottom: 1px dashed rgba(230, 236, 245, 0.95);
+}
+
+.rowLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 6px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+}
+
+.badge {
+  width: 10px;
+  height: 10px;
+  border-radius: 99px;
+  margin-top: 6px;
+}
+.badgeTodo {
+  background: var(--todo);
+}
+.badgeProg {
+  background: var(--inprogress);
+}
+.badgeDone {
+  background: var(--done);
+}
+
+.cell {
+  min-height: 132px;
+  background: linear-gradient(
+    180deg,
+    rgba(248, 250, 252, 0.9),
+    rgba(245, 247, 251, 0.9)
+  );
+  border: 1px solid rgba(230, 236, 245, 0.95);
+  border-radius: 18px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.card {
+  background: white;
+  border: 1px solid rgba(230, 236, 245, 0.95);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.cardTitle {
+  font-weight: 900;
+  letter-spacing: -0.2px;
+  font-size: 14px;
+}
+
+.cardMeta {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.cardActions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.smallBtn {
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+}
+.smallBtn:hover {
+  transform: translateY(-1px);
+}
+.smallBtn:active {
+  transform: translateY(0px);
+}
+
+.smallPrimary {
+  background: var(--primary);
+  color: white;
+  border-color: transparent;
+}
+
+.iconBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.65;
+  font-weight: 900;
+  font-size: 14px;
+  padding: 4px 6px;
+  border-radius: 10px;
+}
+.iconBtn:hover {
+  opacity: 1;
+  background: rgba(15, 23, 42, 0.06);
+}
+
+.popover {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  width: 280px;
+  background: white;
+  border: 1px solid rgba(230, 236, 245, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.16);
+  padding: 12px;
+  z-index: 20;
+}
+
+.popTitle {
+  font-weight: 950;
+  margin-bottom: 10px;
+}
+
+.popRowTitle {
+  font-weight: 900;
+  font-size: 12px;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.popYears {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.popYearBtn {
+  padding: 7px 9px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 900;
+}
+.popYearBtn:hover {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}

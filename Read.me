@@ -1,0 +1,150 @@
+# TaskFlow Lite – Kişisel Todo (Roadmap Board)
+
+TaskFlow Lite, email+şifre ile giriş yapılabilen, her kullanıcının sadece kendi todolarını görebildiği ve yönetebildiği (ekle/listele/sil/done toggle/move) bir **kişisel todo uygulamasıdır**.  
+Arayüz, 5 yıl (Year 1..Year 5) kolonları ve 3 durum satırı (TO DO / IN PROGRESS / DONE) olan **roadmap board** formatında tasarlanmıştır.
+
+---
+
+## Özellikler
+
+### Kimlik Doğrulama
+- ✅ Register (email + şifre)
+- ✅ Login (JWT token)
+- ✅ Logout (token silme)
+
+### Todo Yönetimi
+- ✅ Todo ekle
+- ✅ Todo listele
+- ✅ Todo sil
+- ✅ Done toggle (completed true/false)
+- ✅ Move: todo’yu farklı **status** (todo/inprogress/done) ve **year** (1..5) hücresine taşı
+
+### Yetkilendirme
+- ✅ Her kullanıcı **sadece kendi todolarını** görür ve yönetir.
+
+### Todo Alanları
+Zorunlu alanlar:
+- `title`
+- `completed`
+- `createdAt`
+
+UI için eklenen alanlar (board düzeni):
+- `status` (`todo | inprogress | done`)
+- `year_bucket` (1..5)
+
+---
+
+## Kullanılan Teknolojiler
+
+**Frontend**
+- React (Vite)
+- Axios
+- React Router
+
+**Backend**
+- Node.js
+- Express
+- MySQL (mysql2)
+- JWT (jsonwebtoken)
+- bcrypt (password hash)
+- zod (request validation)
+- nodemon (dev)
+
+**Database**
+- MySQL
+
+---
+
+## Proje Yapısı
+
+```bash
+taskflow-lite/
+  backend/
+    src/
+      routes/
+      middleware/
+      db.js
+      server.js
+    .env
+    package.json
+  frontend/
+    src/
+      pages/
+      api.js
+      auth.js
+    .env
+    package.json
+  README.md
+
+
+Kurulum
+
+Ön Koşullar
+	•	Node.js (önerilen: LTS)
+	•	MySQL (lokalde veya Docker)
+	•	npm
+
+
+1) MySQL Veritabanı Kurulumu
+
+MySQL’e bağlanıp aşağıdaki SQL’i çalıştırın:
+CREATE DATABASE taskflow_lite CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE taskflow_lite;
+
+CREATE TABLE users (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE todos (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  user_id BIGINT NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  completed BOOLEAN NOT NULL DEFAULT FALSE,
+  status ENUM('todo','inprogress','done') NOT NULL DEFAULT 'todo',
+  year_bucket TINYINT NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+  CONSTRAINT fk_todos_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  INDEX idx_user_status_year (user_id, status, year_bucket)
+);
+
+UI’da register sayfası yoktur. İlk kullanıcıyı aşağıdaki komutla oluşturabilirsiniz:
+curl -X POST http://localhost:5050/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"admin@test.com","password":"admin123"}'
+
+
+2) Backend Kurulumu
+cd backend
+npm install
+
+backend/.env dosyasını oluşturun:
+
+PORT=5050
+JWT_SECRET=super_secret_change_me
+
+DB_HOST=localhost
+DB_USER=kullanıcı adınız
+DB_PASSWORD=şifreniz
+DB_NAME=taskflow_lite
+
+
+Backend’i Çalıştırma
+npm run dev
+
+
+3) Frontend Kurulumu
+
+cd ../frontend
+npm install
+
+
+frontend/.env dosyasını oluşturun:
+VITE_API_BASE_URL=http://localhost:5050
+
+
+Frontend’i Çalıştırma
+npm run dev
